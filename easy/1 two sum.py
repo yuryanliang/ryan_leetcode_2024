@@ -50,12 +50,20 @@ class TwoSum:
     #loop
     for i in range(len(nums)):
       for j in range(i+1, len(nums)):
-        if nums[i] + nums[j] = target:
+        if nums[i] + nums[j] == target:
           return [i,j]
     return -1
-  def main():
+  def two_sum_dict(self, nums, target):
+      lookup = {}
+      for i, val in enumerate(nums):
+          if target - val in lookup:
+              return [lookup[target - val], i]
+          else:
+              lookup[val] = i
+
+def main():
     nums = [4, 2, 1]
     target = 6
-    print(TwoSum().two_sum(nums, target))
-  if __name__=="__main__":
-    main()
+    print(TwoSum().two_sum_dict(nums, target))
+if __name__=="__main__":
+  main()
